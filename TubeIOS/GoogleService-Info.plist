@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>36285424942-29n6vnmq3e6apaj09j45n3drvkji80qg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.36285424942-29n6vnmq3e6apaj09j45n3drvkji80qg</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>36285424942-mu7j9rrf3i69jhugjjhefjprsfq3umco.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBXU9XzhmdPUh-U6K4xOtqBKHcUbMjyY0Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>36285424942</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Fitup.TubeIOS</string>
+	<key>PROJECT_ID</key>
+	<string>tube-258900</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tube-258900.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:36285424942:ios:66136650c0b75c567ac6bf</string>
+	<key>DATABASE_URL</key>
+	<string>https://tube-258900.firebaseio.com</string>
+</dict>
+</plist>

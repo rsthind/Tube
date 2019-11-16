@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,9 @@
 		3D0939B8237F9F730096ECCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0939B6237F9F730096ECCC /* Main.storyboard */; };
 		3D0939BA237F9F750096ECCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D0939B9237F9F750096ECCC /* Assets.xcassets */; };
 		3D0939BD237F9F750096ECCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0939BB237F9F750096ECCC /* LaunchScreen.storyboard */; };
+		3D74E54623807F1A00114DDE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D74E54523807F1A00114DDE /* GoogleService-Info.plist */; };
+		3D981ACB23808F5500BCED7D /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D981ACA23808F5500BCED7D /* user.swift */; };
+		E70ACA5A59C2ECED6B516291 /* Pods_TubeIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBEF8ED0F461CF862F92C89 /* Pods_TubeIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		3D0939B9237F9F750096ECCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D0939BC237F9F750096ECCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D0939BE237F9F750096ECCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D74E54523807F1A00114DDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D981ACA23808F5500BCED7D /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		822559F56F3631BD7ACC5A90 /* Pods-TubeIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeIOS.debug.xcconfig"; path = "Target Support Files/Pods-TubeIOS/Pods-TubeIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		ABBEF8ED0F461CF862F92C89 /* Pods_TubeIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TubeIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFBD529A076CF3F9DFC05E9A /* Pods-TubeIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeIOS.release.xcconfig"; path = "Target Support Files/Pods-TubeIOS/Pods-TubeIOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E70ACA5A59C2ECED6B516291 /* Pods_TubeIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2944A488CF198EA4FD2693B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				822559F56F3631BD7ACC5A90 /* Pods-TubeIOS.debug.xcconfig */,
+				FFBD529A076CF3F9DFC05E9A /* Pods-TubeIOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3D0939A4237F9F730096ECCC = {
 			isa = PBXGroup;
 			children = (
 				3D0939AF237F9F730096ECCC /* TubeIOS */,
 				3D0939AE237F9F730096ECCC /* Products */,
+				2944A488CF198EA4FD2693B4 /* Pods */,
+				D875775CB13329C7ED55D011 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +79,22 @@
 				3D0939B0237F9F730096ECCC /* AppDelegate.swift */,
 				3D0939B2237F9F730096ECCC /* SceneDelegate.swift */,
 				3D0939B4237F9F730096ECCC /* ViewController.swift */,
+				3D981ACA23808F5500BCED7D /* user.swift */,
+				3D74E54523807F1A00114DDE /* GoogleService-Info.plist */,
 				3D0939B6237F9F730096ECCC /* Main.storyboard */,
 				3D0939B9237F9F750096ECCC /* Assets.xcassets */,
 				3D0939BB237F9F750096ECCC /* LaunchScreen.storyboard */,
 				3D0939BE237F9F750096ECCC /* Info.plist */,
 			);
 			path = TubeIOS;
+			sourceTree = "<group>";
+		};
+		D875775CB13329C7ED55D011 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABBEF8ED0F461CF862F92C89 /* Pods_TubeIOS.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D0939C1237F9F750096ECCC /* Build configuration list for PBXNativeTarget "TubeIOS" */;
 			buildPhases = (
+				5A0C5CA58AC6668B2E9638EB /* [CP] Check Pods Manifest.lock */,
 				3D0939A9237F9F730096ECCC /* Sources */,
 				3D0939AA237F9F730096ECCC /* Frameworks */,
 				3D0939AB237F9F730096ECCC /* Resources */,
+				9E1CFE0FAA54BB432996FBCC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0939BD237F9F750096ECCC /* LaunchScreen.storyboard in Resources */,
+				3D74E54623807F1A00114DDE /* GoogleService-Info.plist in Resources */,
 				3D0939BA237F9F750096ECCC /* Assets.xcassets in Resources */,
 				3D0939B8237F9F730096ECCC /* Main.storyboard in Resources */,
 			);
@@ -133,11 +166,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A0C5CA58AC6668B2E9638EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TubeIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E1CFE0FAA54BB432996FBCC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TubeIOS/Pods-TubeIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TubeIOS/Pods-TubeIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TubeIOS/Pods-TubeIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3D0939A9237F9F730096ECCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D981ACB23808F5500BCED7D /* user.swift in Sources */,
 				3D0939B5237F9F730096ECCC /* ViewController.swift in Sources */,
 				3D0939B1237F9F730096ECCC /* AppDelegate.swift in Sources */,
 				3D0939B3237F9F730096ECCC /* SceneDelegate.swift in Sources */,
@@ -282,6 +358,7 @@
 		};
 		3D0939C2237F9F750096ECCC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 822559F56F3631BD7ACC5A90 /* Pods-TubeIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +377,7 @@
 		};
 		3D0939C3237F9F750096ECCC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFBD529A076CF3F9DFC05E9A /* Pods-TubeIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
