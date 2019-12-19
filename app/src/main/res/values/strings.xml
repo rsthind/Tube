@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FirebaseTest</string>
+    <string name="title_activity_requests_view">RequestsView</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
