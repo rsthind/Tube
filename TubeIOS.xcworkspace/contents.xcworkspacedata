@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/anshul/Documents/TubeIOS/TubeIOS/User.swift">
+   </FileRef>
+   <FileRef
       location = "group:TubeIOS.xcodeproj">
    </FileRef>
    <FileRef

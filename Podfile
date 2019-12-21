@@ -6,6 +6,8 @@ target 'TubeIOS' do
   use_frameworks!
 
   # Pods for TubeIOS
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
 pod 'Firebase/Analytics'
 pod 'Firebase/Database'
 
