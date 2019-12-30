@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TutorRequestsView"></activity>
-        <activity android:name=".CreateUser">
+        <activity android:name=".TutorViewAppointments"></activity>
+        <activity android:name=".UserOrTutor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TutorRequestsView"></activity>
+        <activity android:name=".CreateUser" />
         <activity android:name=".UserRequestsView" />
-        <activity android:name=".MakeRequest"></activity>
+        <activity android:name=".MakeRequest" />
     </application>
 
 </manifest>

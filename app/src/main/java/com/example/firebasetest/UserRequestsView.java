@@ -23,7 +23,9 @@ public class UserRequestsView extends AppCompatActivity {
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
     ViewGroup rView;
-    ArrayList<Request> requestsList;
+    ArrayList<Request> requestsList; // potential idea --> put this variable in the new class that
+    // has all the static variables so that it's already stored and you don't need to load it
+    // every time
     Button makeRequestButton;
     Button cancelButton;
     Button shrinkButton;
@@ -46,6 +48,9 @@ public class UserRequestsView extends AppCompatActivity {
         addInfoView = (TextView) findViewById(R.id.addInfoView);
         addInfoView.setText(showButtonText(new Request()));
 
+        /*
+        Shrink button: makes the addInfoSection invisible
+         */
         shrinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +58,9 @@ public class UserRequestsView extends AppCompatActivity {
             }
         });
 
-        // Make Request button, all it does it sent an intent to go back to the MakeRequest activity
+        /*
+        Make Request button: all it does it sent an intent to go back to the MakeRequest activity
+         */
         makeRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +119,7 @@ public class UserRequestsView extends AppCompatActivity {
                 // AGH JUST UGLY BRUTE FORCE SOLUTION:((((
                 requestsList = new ArrayList<Request>();
                 for (DataSnapshot each : dataSnapshot.getChildren()) {
-                    insertionSortAdd((each.getValue(Request.class)));
+                    addRequest(each.getValue(Request.class));
                 }
                 changeText();
             }
@@ -151,6 +158,17 @@ public class UserRequestsView extends AppCompatActivity {
                 addIndex = i;
             }
             requestsList.add(addIndex, r);
+        }
+    }
+
+    /**
+     * This method adds a request r, delegating to the insertionSortAdd method, only if the userID of
+     * r is equal to that of currUser
+     * @param r the request to be added
+     */
+    private void addRequest(Request r) {
+        if (CreateUser.currUser.getUserID().equals(r.getUserID())) {
+            insertionSortAdd(r);
         }
     }
 

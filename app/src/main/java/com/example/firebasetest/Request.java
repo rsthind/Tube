@@ -112,4 +112,8 @@ public final class Request implements Comparable<Request> {
         return this.requestID;
     }
 
+    public void setTutorID(String tutorID) {
+        this.tutorID = tutorID;
+    }
+
 }

@@ -21,6 +21,7 @@ public class User {
         this.verifiedCourses = new ArrayList<String>();
         // for testing purposes
         verifiedCourses.add("CS 1331");
+        verifiedCourses.add("CS 2050");
     }
 
     public User(String firstName, String lastName, String GTID, String password, String userID, ArrayList<String> verifiedCourses) {

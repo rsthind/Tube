@@ -58,7 +58,7 @@ public class MakeRequest extends AppCompatActivity {
     private void sendRequest() {
         String course_send = course.getText().toString().trim();
         String date_send = date.getText().toString().trim();
-        String user_ID = CreateUser.currUserID;
+        String user_ID = CreateUser.currUser.getUserID();
         String addInfoString = addInfo.getText().toString();
 
         if(!TextUtils.isEmpty(course_send)) {

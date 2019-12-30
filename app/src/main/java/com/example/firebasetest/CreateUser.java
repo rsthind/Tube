@@ -20,7 +20,6 @@ public class CreateUser extends AppCompatActivity {
     DatabaseReference database = FirebaseDatabase.getInstance().getReference("Users");
 
     static User currUser = new User();
-    static String currUserID = currUser.getUserID();
     EditText firstName;
     EditText lastName;
     EditText GTIDText;
@@ -44,7 +43,7 @@ public class CreateUser extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addUser();
-                Intent myIntent = new Intent(v.getContext(), MakeRequest.class);
+                Intent myIntent = new Intent(v.getContext(), UserOrTutor.class);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -68,7 +67,6 @@ public class CreateUser extends AppCompatActivity {
 
             // assign static variables
             currUser = user;
-            currUserID = currUser.getUserID();
 
             // make notification
             Toast.makeText(this, "User Added", Toast.LENGTH_LONG).show();
