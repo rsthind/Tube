@@ -7,143 +7,221 @@
     android:background="@android:color/black"
     tools:context=".UserRequestsView">
 
-    <Button
-        android:id="@+id/backToMR"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:layout_gravity="left"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/dark_gray_color"
-        android:text="New Request"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allRequestsLayout" />
-
-    <LinearLayout
-        android:id="@+id/addInfoSection"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/dark_gray_color"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="invisible" >
-
-        <TextView
-            android:id="@+id/addInfoView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="How are you doing today\nThis is a sample of what this section will look like\n"
-            android:textColor="@android:color/white"
-            android:textStyle="normal" />
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp">
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:id="@+id/generalScroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="150dp">
+
+                <LinearLayout
+                    android:id="@+id/generalScrollLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/allRequestsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/dark_gray_color"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/allRequestsLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:text="ALL REQUESTS"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@android:color/white" />
+
+                            <androidx.core.widget.NestedScrollView
+                                android:id="@+id/allRequestsScroll"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="10dp">
+
+                                <LinearLayout
+                                    android:id="@+id/allRequestsList"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"/>
+                            </androidx.core.widget.NestedScrollView>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/matchedRequestsLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/dark_gray_color"
+                            android:orientation="vertical"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/allRequestsLayout">
+
+                            <TextView
+                                android:id="@+id/matchedRequestsLabel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:text="MATCHED REQUESTS"
+                                android:textAlignment="center"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@android:color/white" />
+
+                            <androidx.core.widget.NestedScrollView
+                                android:id="@+id/matchedRequestsScroll"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="10dp">
+
+                                <LinearLayout
+                                    android:id="@+id/matchedRequestsList"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical" />
+                            </androidx.core.widget.NestedScrollView>
+
+                        </LinearLayout>
+
+
+                        <Button
+                            android:id="@+id/backToMR"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/dark_gray_color"
+                            android:text="New Request"
+                            android:textColor="@android:color/white"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/matchedRequestsLayout" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
 
             <LinearLayout
-                android:id="@+id/buttonsLayout"
+                android:id="@+id/addInfoSection"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent"
+
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/add_info_color"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="invisible" >
 
-                <Button
-                    android:id="@+id/cancelButton"
-                    android:background="@drawable/cyan_blue_color"
+                <TextView
+                    android:id="@+id/addInfoView"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"
-                    android:textColor="@android:color/white"
-
-
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/shrinkButton"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-
-                    android:text="Cancel Request" />
-
-
-                <Button
-                    android:id="@+id/shrinkButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/cyan_blue_color"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="How are you doing today\nThis is a sample of what this section will look like\n"
                     android:textColor="@android:color/white"
+                    android:textStyle="normal" />
 
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="5dp"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp">
 
-                    android:text="Shrink" />
+                    <LinearLayout
+                        android:id="@+id/buttonsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="parent">
 
+                        <Button
+                            android:id="@+id/cancelButton"
+                            android:background="@drawable/dark_gray_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:textColor="@android:color/white"
+
+
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/shrinkButton"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+
+                            android:text="Cancel Request" />
+
+
+                        <Button
+                            android:id="@+id/shrinkButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@drawable/dark_gray_color"
+                            android:layout_weight="1"
+                            android:textColor="@android:color/white"
+
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginEnd="5dp"
+
+                            android:text="Shrink" />
+
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/allRequestsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:orientation="vertical"
-        android:background="@drawable/dark_gray_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/requestsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="YOUR REQUESTS"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/white" />
-
-        <ScrollView
-            android:id="@+id/requestsScroll"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="10dp">
-
-            <LinearLayout
-                android:id="@+id/requestsList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
-
-
-    </LinearLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

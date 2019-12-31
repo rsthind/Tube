@@ -43,7 +43,7 @@ public class TutorRequestsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_requests_view);
 
-        rView = (ViewGroup) findViewById(R.id.requestsList);
+        rView = (ViewGroup) findViewById(R.id.allRequestsList);
         requestsList = new ArrayList<Request>();
         verifiedCourses = CreateUser.currUser.getVerifiedCourses();
         allRequestsMap = new HashMap<>();
@@ -85,7 +85,7 @@ public class TutorRequestsView extends AppCompatActivity {
         viewAppointmentsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(v.getContext(), MakeRequest.class);
+                Intent myIntent = new Intent(v.getContext(), TutorViewAppointments.class);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -103,7 +103,7 @@ public class TutorRequestsView extends AppCompatActivity {
                 requestsList = new ArrayList<Request>();
                 for (DataSnapshot each : dataSnapshot.getChildren()) {
                     addToMapIfAble(each.getValue(Request.class));
-                    insertionSortAddIfAble(requestsList, each.getValue(Request.class));
+                    addRequest(requestsList, each.getValue(Request.class));
                 }
                 changeText();
             }
@@ -147,11 +147,13 @@ public class TutorRequestsView extends AppCompatActivity {
 
     /**
      * This method is similar to insertionSortAdd but only adds the request if its course is part
-     * of the verifiedCourses list
+     * of the verifiedCourses list AND the tutorID field of the request is either blank or the currUser's
+     * userID
      * @param r the request to be added
      */
-    private void insertionSortAddIfAble(List<Request> l, Request r) {
-        if (verifiedCourses.contains(r.getCourse())) {
+    private void addRequest(List<Request> l, Request r) {
+        if (verifiedCourses.contains(r.getCourse()) && (r.getTutorID().length() == 0
+                || r.getTutorID().equals(CreateUser.currUser.getUserID()))) {
             if (l.size() == 0) {
                 l.add(r);
             } else {
