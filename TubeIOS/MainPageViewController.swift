@@ -15,6 +15,7 @@ class MainPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let userID = Auth.auth().currentUser?.uid
+        setupListenerForRequests()
         User.ref.child("user").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
             User.firstName = value?["firstName"] as? String ?? ""
@@ -32,6 +33,7 @@ class MainPageViewController: UIViewController {
         }) { (error) in
             print(error.localizedDescription)
         }
+       // writeRequestToDatabase(className: "CS 1331", dateTime: "01/06/2020 @ 3:50 PM", description: "Need help with polymorphism")
         // Do any additional setup after loading the view.
     }
     

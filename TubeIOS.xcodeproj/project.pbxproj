@@ -16,6 +16,8 @@
 		3D0939BD237F9F750096ECCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D0939BB237F9F750096ECCC /* LaunchScreen.storyboard */; };
 		3D5AE57323AA1C0D007B8E75 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5AE57223AA1C0D007B8E75 /* LoginViewController.swift */; };
 		3D5AE57523AA1C17007B8E75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5AE57423AA1C17007B8E75 /* User.swift */; };
+		3D5AE57723ADD8DA007B8E75 /* CreateRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5AE57623ADD8DA007B8E75 /* CreateRequestsViewController.swift */; };
+		3D5AE59D23AF616E007B8E75 /* ViewRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5AE59C23AF616E007B8E75 /* ViewRequestsTableViewController.swift */; };
 		3D74A3BD2389FC5200D141E3 /* RegistrationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74A3BC2389FC5200D141E3 /* RegistrationInfoViewController.swift */; };
 		3D74A3BF2389FC6E00D141E3 /* ClassesInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74A3BE2389FC6E00D141E3 /* ClassesInfoViewController.swift */; };
 		3D74A3C12389FE1200D141E3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74A3C02389FE1200D141E3 /* User.swift */; };
@@ -35,6 +37,8 @@
 		3D0939BE237F9F750096ECCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D5AE57223AA1C0D007B8E75 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3D5AE57423AA1C17007B8E75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = /Users/anshul/Documents/TubeIOS/TubeIOS/User.swift; sourceTree = "<absolute>"; };
+		3D5AE57623ADD8DA007B8E75 /* CreateRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestsViewController.swift; sourceTree = "<group>"; };
+		3D5AE59C23AF616E007B8E75 /* ViewRequestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRequestsTableViewController.swift; sourceTree = "<group>"; };
 		3D74A3BC2389FC5200D141E3 /* RegistrationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInfoViewController.swift; sourceTree = "<group>"; };
 		3D74A3BE2389FC6E00D141E3 /* ClassesInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesInfoViewController.swift; sourceTree = "<group>"; };
 		3D74A3C02389FE1200D141E3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = /Users/anshul/Documents/TubeIOS/TubeIOS/User.swift; sourceTree = "<absolute>"; };
@@ -97,6 +101,8 @@
 				3D74A3C02389FE1200D141E3 /* User.swift */,
 				3D74E54523807F1A00114DDE /* GoogleService-Info.plist */,
 				3D0939B6237F9F730096ECCC /* Main.storyboard */,
+				3D5AE59C23AF616E007B8E75 /* ViewRequestsTableViewController.swift */,
+				3D5AE57623ADD8DA007B8E75 /* CreateRequestsViewController.swift */,
 				3D0939B9237F9F750096ECCC /* Assets.xcassets */,
 				3D0939BB237F9F750096ECCC /* LaunchScreen.storyboard */,
 				3D0939BE237F9F750096ECCC /* Info.plist */,
@@ -234,7 +240,9 @@
 				3D74A3C12389FE1200D141E3 /* User.swift in Sources */,
 				3D5AE57323AA1C0D007B8E75 /* LoginViewController.swift in Sources */,
 				3D5AE57523AA1C17007B8E75 /* User.swift in Sources */,
+				3D5AE57723ADD8DA007B8E75 /* CreateRequestsViewController.swift in Sources */,
 				3D0939B1237F9F730096ECCC /* AppDelegate.swift in Sources */,
+				3D5AE59D23AF616E007B8E75 /* ViewRequestsTableViewController.swift in Sources */,
 				3D0939B3237F9F730096ECCC /* SceneDelegate.swift in Sources */,
 				3D74A3BF2389FC6E00D141E3 /* ClassesInfoViewController.swift in Sources */,
 			);

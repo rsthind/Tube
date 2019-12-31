@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
         User.ref = Database.database().reference()
+        
         //ref.child("user").setValue(["username": "Anshul"])
         //ref.child("user").setValue(["password": "Gtech"])
         //ref.child("user").setValue(["GTID": "903486371"])

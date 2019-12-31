@@ -34,4 +34,25 @@ public func writeToDatabase(firstName: String, GTID: String, email: String, majo
     userDictionary["classes"] = classesString
     User.ref.child("user").child((Auth.auth().currentUser?.uid)!).setValue(userDictionary)
 }
+public func writeRequestToDatabase(className: String, dateTime: String, description: String, reqSelected: Bool, uidToUse: String) {
+    var requestDict: [String: String] = [:]
+    requestDict["className"] = className
+    requestDict["dateTime"] = dateTime
+    requestDict["description"] = description
+    requestDict["userUID"] = uidToUse
+    if (reqSelected == false) {
+        User.ref.child("requests").child("Unmatched Requests").child(uidToUse).childByAutoId().setValue(requestDict)
+    }
+    else {
+        User.ref.child("requests").child("Matched Requests").child(uidToUse).childByAutoId().setValue(requestDict)
+    }
+    
+}
+public func setupListenerForRequests() {
+    User.ref.child("requests").child("Matched Requests").child(Auth.auth().currentUser!.uid).observe(.childAdded, with: {(DataSnapshot) in
+        let postDict = DataSnapshot.value as? NSDictionary ?? [:]
+        print("Value added \(postDict)")
+        
+    })
+}
 				
