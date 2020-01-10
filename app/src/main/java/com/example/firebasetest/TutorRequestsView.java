@@ -73,7 +73,7 @@ public class TutorRequestsView extends AppCompatActivity {
         matchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedRequest.setTutorID(CreateUser.currUser.getUserID());
+                selectedRequest.setTutorID(CreateUser.currUser.getGTID());
                 database.child(selectedRequest.getRequestID()).setValue(selectedRequest);
                 addInfoSection.setVisibility(View.INVISIBLE);
             }
@@ -153,7 +153,7 @@ public class TutorRequestsView extends AppCompatActivity {
      */
     private void addRequest(List<Request> l, Request r) {
         if (verifiedCourses.contains(r.getCourse()) && (r.getTutorID().length() == 0
-                || r.getTutorID().equals(CreateUser.currUser.getUserID()))) {
+                || r.getTutorID().equals(CreateUser.currUser.getGTID()))) {
             if (l.size() == 0) {
                 l.add(r);
             } else {

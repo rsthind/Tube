@@ -142,7 +142,7 @@ public class TutorViewAppointments extends AppCompatActivity {
      * @param r the request to be added
      */
     private void addRequest(Request r) {
-        if (CreateUser.currUser.getUserID().equals(r.getTutorID())) {
+        if (CreateUser.currUser.getGTID().equals(r.getTutorID())) {
             insertionSortAdd(r);
         }
     }

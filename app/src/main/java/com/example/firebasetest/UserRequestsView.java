@@ -177,7 +177,7 @@ public class UserRequestsView extends AppCompatActivity {
      * @param r the request to be added
      */
     private void processRequest(Request r) {
-        if (CreateUser.currUser.getUserID().equals(r.getUserID())) {
+        if (CreateUser.currUser.getGTID().equals(r.getUserID())) {
             insertionSortAdd(allRequestsList, r);
             if (r.getTutorID().length() != 0) {
                 insertionSortAdd(matchedRequestsList, r);
