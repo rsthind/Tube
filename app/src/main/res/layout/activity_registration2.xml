@@ -36,26 +36,16 @@
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="176dp" />
 
+
     <Button
         android:id="@+id/create_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="62dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="17dp"
         android:text="Finish Creating Account" />
-
-    <MultiAutoCompleteTextView
-        android:id="@+id/mactv"
-        android:layout_width="285dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="370dp"
-        android:completionThreshold="1"
-        android:hint="Select Classes" />
 
     <TextView
         android:id="@+id/ca"
@@ -81,5 +71,48 @@
         android:text="Leave Blank if you Don't Wish to Tutor"
         android:textColor="@color/colorBlack"
         android:textSize="12dp"/>
+
+    <Button
+        android:id="@+id/add_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="82dp"
+        android:layout_marginBottom="372dp"
+        android:text="Add" />
+
+    <AutoCompleteTextView
+        android:id="@+id/course_actv"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="201dp"
+        android:layout_marginBottom="374dp"
+        android:hint="Course Name"
+        android:completionThreshold="1"/>
+
+    <TextView
+        android:id="@+id/your_courses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="285dp"
+        android:layout_marginBottom="312dp"
+        android:text="Your Courses"
+        android:textColor="@color/colorBlack"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="222dp"
+        android:layout_height="186dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="153dp"
+        android:layout_marginBottom="120dp" />
 
 </RelativeLayout>
