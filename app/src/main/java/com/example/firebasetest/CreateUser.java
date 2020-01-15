@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class CreateUser extends AppCompatActivity {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Users");
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference(Constants.UserDBName);
 
     static User currUser = new User();
     EditText firstName;
@@ -61,6 +61,7 @@ public class CreateUser extends AppCompatActivity {
         verifiedCourses.add(verifiedCoursesText.getText().toString());
 
         if (!TextUtils.isEmpty(fname) && !TextUtils.isEmpty(lname) && !TextUtils.isEmpty(GTID) && !TextUtils.isEmpty(pass)) {
+
             String userID = database.push().getKey();
             User user = new User(fname, lname, GTID, pass, userID, verifiedCourses);
             database.child(userID).setValue(user);

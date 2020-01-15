@@ -18,20 +18,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TutorViewAppointments extends AppCompatActivity {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
+    DatabaseReference database = FirebaseDatabase.getInstance().
+            getReference(Constants.RequestsDBName);
+
     ViewGroup rView;
-    ArrayList<Request> requestsList;
-    Button viewRequests;
-    Button cancelButton;
-    Button shrinkButton;
     LinearLayout addInfoSection;
     TextView addInfoView;
 
+    ArrayList<Request> requestsList;
+
+    Button viewRequests;
+    Button cancelButton;
+    Button shrinkButton;
+
     Request selectedRequest;
 
+    /**
+     * Instantiates class variables and sets buttons
+     * @param savedInstanceState some instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,7 +86,13 @@ public class TutorViewAppointments extends AppCompatActivity {
                 addInfoView.setText("");
                 // note: this doesn't actually get rid of the request itself, it only gets rid of
                 // its spot in the cloud, so the request is still in requestsList
-                database.child(selectedRequest.getRequestID()).removeValue();
+
+                database.child(Constants.MatchedRequestsDBName).child(selectedRequest.
+                        getUserID()).child(selectedRequest.getRequestID()).removeValue();
+
+                database.child(Constants.UnmatchedRequestsDBName).child(selectedRequest.
+                        getUserID()).child(selectedRequest.getRequestID()).setValue(selectedRequest);
+
                 addInfoSection.setVisibility(View.INVISIBLE);
             }
         });
@@ -87,13 +102,15 @@ public class TutorViewAppointments extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.child(Constants.MatchedRequestsDBName).
+                addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // AGH JUST UGLY BRUTE FORCE SOLUTION:((((
-                requestsList = new ArrayList<Request>();
-                for (DataSnapshot each : dataSnapshot.getChildren()) {
-                    addRequest(each.getValue(Request.class));
+                requestsList = new ArrayList<>();
+                for (DataSnapshot user : dataSnapshot.getChildren()) {
+                    for (DataSnapshot userReq : user.getChildren()) {
+                        addRequest(requestsList, userReq.getValue(Request.class));
+                    }
                 }
                 changeText();
             }
@@ -124,26 +141,27 @@ public class TutorViewAppointments extends AppCompatActivity {
      * is always sorted
      * @param r the request to be added
      */
-    private void insertionSortAdd(Request r) {
-        if (this.requestsList.size() == 0) {
-            requestsList.add(r);
+    private static void insertionSortAdd(List<Request> l, Request r) {
+        if (l.size() == 0) {
+            l.add(r);
         } else {
-            int addIndex = requestsList.size();
-            for (int i = requestsList.size() - 1; i >= 0 && r.compareTo(requestsList.get(i)) < 0; i--) {
+            int addIndex = l.size();
+            for (int i = l.size() - 1; i >= 0 && r.compareTo(l.get(i)) < 0; i--) {
                 addIndex = i;
             }
-            requestsList.add(addIndex, r);
+            l.add(addIndex, r);
         }
     }
 
     /**
-     * This method adds a request r, delegating to the insertionSortAdd method, only if the tutorID of
-     * r is equal to the userID of currUser
+     * This method is similar to insertionSortAdd but only adds the request if its course is part
+     * of the verifiedCourses list.
+     * userID
      * @param r the request to be added
      */
-    private void addRequest(Request r) {
+    private void addRequest(List<Request> l, Request r) {
         if (CreateUser.currUser.getUserID().equals(r.getTutorID())) {
-            insertionSortAdd(r);
+            insertionSortAdd(l, r);
         }
     }
 

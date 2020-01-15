@@ -27,7 +27,7 @@ public class Time implements Comparable<Time> {
     public Time() {
         GregorianCalendar gc = new GregorianCalendar();
         this.year = gc.get(GregorianCalendar.YEAR);
-        this.month = gc.get(GregorianCalendar.MONTH);
+        this.month = gc.get(GregorianCalendar.MONTH) + 1;
         this.date = gc.get(GregorianCalendar.DATE);
         this.hourOfDay = gc.get(GregorianCalendar.HOUR_OF_DAY);
         this.minute = gc.get(GregorianCalendar.MINUTE);
@@ -61,10 +61,17 @@ public class Time implements Comparable<Time> {
         int dayOfWeek = cal.get(GregorianCalendar.DAY_OF_WEEK);
         String minuteString = (minute < 10) ? "0" + minute : "" + minute;
 
-        String formattedTime = days[dayOfWeek - 1] + ", " + months[month] + " " + date + " " + year + " @ " + currHour + ":" + minuteString
-                + " " + AM_PM;
-        String formattedTime2 = currHour + ":" + minuteString + " " + AM_PM + " || " + days[dayOfWeek - 1] + ", " + months[month] + " " +
-                date + " " + year;
+//        String formattedTime = days[dayOfWeek - 1] + ", " + months[month - 1] + " " + date + " " + year + " @ " + currHour + ":" + minuteString
+//                + " " + AM_PM;
+        String formattedTime2;
+        try {
+            formattedTime2 = currHour + ":" + minuteString + " " + AM_PM + " || " + days[dayOfWeek - 1] + ", " + months[month - 1] + " " +
+                    date + " " + year;
+        } catch (IndexOutOfBoundsException e) {
+            formattedTime2 = currHour + ":" + minuteString + " " + AM_PM + " || " + days[dayOfWeek - 1] + ", " + months[month] + " " +
+                    date + " " + year;
+        }
+
         return formattedTime2;
     }
 

@@ -20,24 +20,32 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TutorRequestsView extends AppCompatActivity {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
-    ViewGroup rView;
-    ArrayList<ArrayList<Request>> allRequestsList;
+    DatabaseReference database = FirebaseDatabase.getInstance().
+            getReference(Constants.RequestsDBName);
+
     HashMap<String, ArrayList<Request>> allRequestsMap;
+    ArrayList<ArrayList<Request>> allRequestsList;
     ArrayList<Request> requestsList;
     ArrayList<String> verifiedCourses;
+
+    ViewGroup rView;
     LinearLayout addInfoSection;
     TextView addInfoView;
+
     Button shrinkButton;
     Button matchButton;
     Button viewAppointmentsButton;
 
     Request selectedRequest;
 
-
+    /**
+     * Instantiates class variables and sets buttons
+     * @param savedInstanceState some instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +82,15 @@ public class TutorRequestsView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectedRequest.setTutorID(CreateUser.currUser.getUserID());
-                database.child(selectedRequest.getRequestID()).setValue(selectedRequest);
+
+                database.child(Constants.MatchedRequestsDBName).
+                        child(selectedRequest.getUserID()).
+                        child(selectedRequest.getRequestID()).setValue(selectedRequest);
+
+                database.child(Constants.UnmatchedRequestsDBName).
+                        child(selectedRequest.getUserID()).
+                        child(selectedRequest.getRequestID()).removeValue();
+
                 addInfoSection.setVisibility(View.INVISIBLE);
             }
         });
@@ -96,14 +112,16 @@ public class TutorRequestsView extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.child(Constants.UnmatchedRequestsDBName).
+                addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // AGH JUST UGLY BRUTE FORCE SOLUTION:((((
-                requestsList = new ArrayList<Request>();
-                for (DataSnapshot each : dataSnapshot.getChildren()) {
-                    addToMapIfAble(each.getValue(Request.class));
-                    addRequest(requestsList, each.getValue(Request.class));
+                requestsList = new ArrayList<>();
+                for (DataSnapshot user : dataSnapshot.getChildren()) {
+                    for (DataSnapshot userReq : user.getChildren()) {
+                        addToMapIfAble(verifiedCourses, allRequestsMap, userReq.getValue(Request.class));
+                        addRequest(verifiedCourses, requestsList, userReq.getValue(Request.class));
+                    }
                 }
                 changeText();
             }
@@ -131,9 +149,10 @@ public class TutorRequestsView extends AppCompatActivity {
     /**
      * This method is used when adding the Requests from the database so that the instance RequestsList
      * is always sorted
+     * @param l the list to add to
      * @param r the request to be added
      */
-    private void insertionSortAdd(List<Request> l, Request r) {
+    private static void insertionSortAdd(List<Request> l, Request r) {
         if (l.size() == 0) {
             l.add(r);
         } else {
@@ -147,32 +166,29 @@ public class TutorRequestsView extends AppCompatActivity {
 
     /**
      * This method is similar to insertionSortAdd but only adds the request if its course is part
-     * of the verifiedCourses list AND the tutorID field of the request is either blank or the currUser's
+     * of the verifiedCourses list.
      * userID
+     * @param verifiedCourses the list of verified courses
+     * @param l the list to add to
      * @param r the request to be added
      */
-    private void addRequest(List<Request> l, Request r) {
-        if (verifiedCourses.contains(r.getCourse()) && (r.getTutorID().length() == 0
-                || r.getTutorID().equals(CreateUser.currUser.getUserID()))) {
-            if (l.size() == 0) {
-                l.add(r);
-            } else {
-                int addIndex = l.size();
-                for (int i = l.size() - 1; i >= 0 && r.compareTo(l.get(i)) < 0; i--) {
-                    addIndex = i;
-                }
-                l.add(addIndex, r);
-            }
+    private static void addRequest(List<String> verifiedCourses, List<Request> l, Request r) {
+        if (verifiedCourses.contains(r.getCourse())) {
+            insertionSortAdd(l, r);
         }
     }
 
     /**
-     * This method adds a request to the corresponding course's ArrayList in the allRequestsMap
+     * This method adds a given request r to a map's corresponding list only if the request is a
+     * verified course.
+     * @param verifiedCourses list of verified courses
+     * @param m the map to add to
      * @param r the request to be added
      */
-    private void addToMapIfAble(Request r) {
+    private static void addToMapIfAble(List<String> verifiedCourses, Map<String,
+            ArrayList<Request>> m, Request r) {
         if (verifiedCourses.contains(r.getCourse())) {
-            insertionSortAdd(allRequestsMap.get(r.getCourse()), r);
+            insertionSortAdd(m.get(r.getCourse()), r);
         }
     }
 

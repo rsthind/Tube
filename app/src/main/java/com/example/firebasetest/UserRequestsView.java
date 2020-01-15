@@ -20,30 +20,38 @@ import java.util.List;
 
 public class UserRequestsView extends AppCompatActivity {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
-    LinearLayout allRequestsView;
+    DatabaseReference database = FirebaseDatabase.getInstance().
+            getReference(Constants.RequestsDBName);
+
+    LinearLayout unmatchedRequestsView;
     LinearLayout matchedRequestsView;
-    ArrayList<Request> allRequestsList; // potential idea --> put this variable in the new class that
+    LinearLayout addInfoSection;
+
+    ArrayList<Request> unmatchedRequestsList; // potential idea --> put this variable in the new class that
     // has all the static variables so that it's already stored and you don't need to load it
     // every time
     ArrayList<Request> matchedRequestsList;
+
     Button makeRequestButton;
     Button cancelButton;
     Button shrinkButton;
-    LinearLayout addInfoSection;
-    TextView addInfoView;
 
+    TextView addInfoView;
     Request selectedRequest;
 
+    /**
+     * Instantiates class variables and sets buttons
+     * @param savedInstanceState some instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_requests_view);
 
         makeRequestButton = (Button) findViewById(R.id.backToMR);
-        allRequestsList = new ArrayList<Request>();
+        unmatchedRequestsList = new ArrayList<Request>();
         matchedRequestsList = new ArrayList<Request>();
-        allRequestsView = (LinearLayout) findViewById(R.id.allRequestsList);
+        unmatchedRequestsView = (LinearLayout) findViewById(R.id.allRequestsList);
         matchedRequestsView = (LinearLayout) findViewById(R.id.matchedRequestsList);
         cancelButton = (Button) findViewById(R.id.cancelButton);
         shrinkButton = (Button) findViewById(R.id.shrinkButton);
@@ -89,43 +97,40 @@ public class UserRequestsView extends AppCompatActivity {
 
     }
 
+    /**
+     * Sets up the even listeners on both the Matched and Unmatched Requests databases
+     * Changes the respective lists accordingly
+     */
     @Override
     protected void onStart() {
         super.onStart();
 
-        database.addValueEventListener(new ValueEventListener() {
+        database.child(Constants.UnmatchedRequestsDBName).child(CreateUser.currUser.getUserID()).
+                addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int count = 0;
-                int i;
+                unmatchedRequestsList =  new ArrayList<>();
                 for (DataSnapshot each : dataSnapshot.getChildren()) {
-                    count++;
+                    insertionSortAdd(unmatchedRequestsList, each.getValue(Request.class));
                 }
-                /*
-                if (count > requestsList.size()) {
-                    i = 1;
-                    for (DataSnapshot each : dataSnapshot.getChildren()) {
-                        if (i++ > requestsList.size()) {
-                            Request req = each.getValue(Request.class);
-                            insertionSortAdd(req);
-                        }
-                    }
-                } else if (count < requestsList.size()){
-                    requestsList = new ArrayList<Request>();
-                    // NOTE: this is extremely inefficient (i think?)
-                    for (DataSnapshot each : dataSnapshot.getChildren()) {
-                        Request req = each.getValue(Request.class);
-                        insertionSortAdd(req);
-                    }
-                }*/
+                changeUnmatchedText();
+            }
 
-                // AGH JUST UGLY BRUTE FORCE SOLUTION:((((
-                allRequestsList = new ArrayList<Request>();
-                matchedRequestsList = new ArrayList<Request>();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        database.child(Constants.MatchedRequestsDBName).child(CreateUser.currUser.getUserID()).
+                addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                matchedRequestsList =  new ArrayList<>();
                 for (DataSnapshot each : dataSnapshot.getChildren()) {
-                    processRequest(each.getValue(Request.class));
+                    insertionSortAdd(matchedRequestsList, each.getValue(Request.class));
                 }
-                changeText();
+                changeMatchedText();
             }
 
             @Override
@@ -136,17 +141,17 @@ public class UserRequestsView extends AppCompatActivity {
     }
 
     /**
-     * This method updates the allRequestsView and matchedRequestsView, assigning a button to each
+     * This method updates the unmatchedRequestsView and matchedRequestsView, assigning a button to each
      * request in requestsList and linking that button to the addInfoSection that pops up at the bottom.
      */
     private void changeText() {
-        allRequestsView.removeAllViews();
-        matchedRequestsView.removeAllViews();
-        for (Request each : allRequestsList) {
+        unmatchedRequestsView.removeAllViews();
+        for (Request each : unmatchedRequestsList) {
             Button eachButton = new Button(this);
             linkButton(eachButton, each);
-            allRequestsView.addView(eachButton);
+            unmatchedRequestsView.addView(eachButton);
         }
+        matchedRequestsView.removeAllViews();
         for (Request each : matchedRequestsList) {
             Button eachButton = new Button(this);
             linkButton(eachButton, each);
@@ -155,11 +160,37 @@ public class UserRequestsView extends AppCompatActivity {
     }
 
     /**
+     * This method updates the matchedRequestsView, assigning a button to each request in
+     * matchedRequestsList and linking that button to the addInfoSection
+     */
+    private void changeMatchedText() {
+        matchedRequestsView.removeAllViews();
+        for (Request each : matchedRequestsList) {
+            Button eachButton = new Button(this);
+            linkButton(eachButton, each);
+            matchedRequestsView.addView(eachButton);
+        }
+    }
+
+    /**
+     * This method updates the unmatchedRequestsView, assigning a button to each request in
+     * unmatchedRequestsList and linking that button to the addInfoSection
+     */
+    private void changeUnmatchedText() {
+        unmatchedRequestsView.removeAllViews();
+        for (Request each : unmatchedRequestsList) {
+            Button eachButton = new Button(this);
+            linkButton(eachButton, each);
+            unmatchedRequestsView.addView(eachButton);
+        }
+    }
+
+    /**
      * This method is used when adding the Requests from the database so that the instance RequestsList
      * is always sorted
      * @param r the request to be added
      */
-    private void insertionSortAdd(List<Request> l, Request r) {
+    private static void insertionSortAdd(List<Request> l, Request r) {
         if (l.size() == 0) {
             l.add(r);
         } else {
@@ -172,13 +203,13 @@ public class UserRequestsView extends AppCompatActivity {
     }
 
     /**
-     * This method adds a request r to allRequestsList and matchedRequestsList, delegating to the
+     * This method adds a request r to unmatchedRequestsList and matchedRequestsList, delegating to the
      * insertionSortAdd method, only if the userID of r is equal to the userID of currUser
      * @param r the request to be added
      */
     private void processRequest(Request r) {
         if (CreateUser.currUser.getUserID().equals(r.getUserID())) {
-            insertionSortAdd(allRequestsList, r);
+            insertionSortAdd(unmatchedRequestsList, r);
             if (r.getTutorID().length() != 0) {
                 insertionSortAdd(matchedRequestsList, r);
             }

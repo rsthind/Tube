@@ -17,7 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MakeRequest extends AppCompatActivity {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
+    DatabaseReference database =
+            FirebaseDatabase.getInstance().getReference(Constants.RequestsDBName);
 
     EditText course;
     EditText date;
@@ -61,10 +62,12 @@ public class MakeRequest extends AppCompatActivity {
         String user_ID = CreateUser.currUser.getUserID();
         String addInfoString = addInfo.getText().toString();
 
-        if(!TextUtils.isEmpty(course_send)) {
+        if(!TextUtils.isEmpty(course_send)) { // replace this line with seeing if the time is valid
             String request_ID = database.push().getKey();
             Request req = new Request(course_send, addInfoString, new Time(), user_ID, "", request_ID);
-            database.child(request_ID).setValue(req);
+//            database.child(request_ID).setValue(req);
+            database.child(Constants.UnmatchedRequestsDBName).child(CreateUser.currUser.getUserID()).
+                    child(request_ID).setValue(req);
 
             // make notification
             Toast toast = Toast.makeText(this, "Request Created", Toast.LENGTH_SHORT);
