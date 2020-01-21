@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 public class MakeRequest extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");
+    //DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");//
 
     EditText course;
     TextInputLayout addInfo;
@@ -71,7 +71,7 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                sendRequest();
+                //sendRequest();
                 Intent intent = new Intent(view.getContext(), UserRequestsView.class);
                 startActivityForResult(intent, 0);
             }
@@ -127,7 +127,7 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
         }
     }
 
-    public void sendRequest() {
+    /**public void sendRequest() {
         String course_text = course.getText().toString().trim();
         String user_ID = CreateUser.currUser.getGTID();
         String addInfoText = addInfo.getEditText().toString().trim();
@@ -148,7 +148,7 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
-    }
+    }**/
 
     private boolean isValidDateRequest(int year, int month, int day_of_month) {
         //decide if the date request is within the acceptable bounds
