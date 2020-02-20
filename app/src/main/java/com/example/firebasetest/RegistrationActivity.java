@@ -47,7 +47,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 String user_email = email.getText().toString().trim();
                 String user_pw = password.getText().toString().trim();
 
-
                 if (validate()) {
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_pw).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -62,7 +61,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 part2.putExtra("major", major.getText().toString().trim());
                                 part2.putExtra("password", password.getText().toString().trim());
                                 startActivity(part2);
-                                //startActivity(new Intent(RegistrationActivity.this, RegistrationActivity2.class));
+                                startActivity(new Intent(RegistrationActivity.this, RegistrationActivity2.class));
                             } else {
                                 FirebaseAuthException e = (FirebaseAuthException)task.getException();
                                 Toast.makeText(RegistrationActivity.this,"Registration Failed. " + e.getMessage(), Toast.LENGTH_LONG).show();

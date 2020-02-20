@@ -77,11 +77,10 @@ public class LoginPage extends AppCompatActivity {
                         }
                     });
                 } else {
-                    Toast.makeText(LoginPage.this, "Error Occured", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginPage.this, "Error Occurred", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
         notRegistered.setOnClickListener(new View.OnClickListener() {
             @Override

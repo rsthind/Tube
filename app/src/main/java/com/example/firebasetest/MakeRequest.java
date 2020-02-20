@@ -24,10 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MakeRequest extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
-    //DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");//
+    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");//
 
     EditText course;
     TextInputLayout addInfo;
@@ -71,7 +72,7 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //sendRequest();
+                sendRequest();
                 Intent intent = new Intent(view.getContext(), UserRequestsView.class);
                 startActivityForResult(intent, 0);
             }
@@ -100,7 +101,6 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
         c.set(Calendar.DAY_OF_MONTH, i2);
 
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-            //must parse thru this string to get important info
         if (isValidDateRequest(i, i1, i2)) {
             dateSelection.setText(currentDateString);
             dateTimeInfo[0] = i;
@@ -116,10 +116,19 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
     @Override
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
         if (isValidTimeRequest(i, i1)) {
-            timeSelection.setText(String.format("%d:%d %s", i, i1, "am/pm"));
+            String ampm;
+            int newhour;
+            if (i > 12) {
+                ampm = "PM";
+                newhour = i - 12;
+            } else {
+                ampm = "AM";
+                newhour = i;
+            }
+
+            timeSelection.setText(String.format("%d:%d %s", newhour, i1, ampm));
             dateTimeInfo[3] = i;
             dateTimeInfo[4] = i1;
-            //need to ask david about the am/pm situation
         } else {
             Toast toast = Toast.makeText(this, "Please choose an acceptable time.", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
@@ -127,7 +136,7 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
         }
     }
 
-    /**public void sendRequest() {
+    public void sendRequest() {
         String course_text = course.getText().toString().trim();
         String user_ID = CreateUser.currUser.getGTID();
         String addInfoText = addInfo.getEditText().toString().trim();
@@ -148,15 +157,55 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
-    }**/
+    }
 
     private boolean isValidDateRequest(int year, int month, int day_of_month) {
-        //decide if the date request is within the acceptable bounds
-        return true;
+        //try restricting the date selection from the GUI itself
+        GregorianCalendar currentTime = new GregorianCalendar();
+        GregorianCalendar enteredTime = new GregorianCalendar(year, month, day_of_month);
+
+        long diffInSeconds = enteredTime.getTimeInMillis() - currentTime.getTimeInMillis();
+
+        if (diffInSeconds > 604800) {
+            Toast toast = Toast.makeText(this, "Cannot Reserve a Session Past 1 Week.", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return  false;
+        } else if (diffInSeconds < 0){
+            Toast toast = Toast.makeText(this, "Not a Valid Date Entry", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return  false;
+        } else {
+            return true;
+        }
     }
 
     private boolean isValidTimeRequest(int hour, int minute) {
-        //decide if the date request is within the acceptable bounds
-        return true;
+        GregorianCalendar now = new GregorianCalendar();
+
+        int currTime = 60 * now.get(Calendar.HOUR) + now.get(Calendar.MINUTE);
+        int requestedTime;
+
+        if (hour > 12) {
+            requestedTime = 60 * (hour - 12) + minute;
+        } else {
+            requestedTime = 60 * hour + minute;
+        }
+
+        if (requestedTime - currTime < 0) {
+            Toast toast = Toast.makeText(this, "Invalid Time Entry", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return false;
+        } else if (requestedTime - currTime < 60) {
+            Toast toast = Toast.makeText(this, "Must make entry at least one hour in advance.", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return false;
+        } else {
+            return true;
+        }
+
     }
 }
