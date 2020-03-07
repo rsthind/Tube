@@ -18,6 +18,9 @@
         <activity android:name=".TutorViewAppointments"></activity>
         <activity android:name=".UserOrTutor"></activity>
         <activity android:name=".TutorRequestsView"></activity>
+<<<<<<< HEAD:AndroidTube/app/src/main/AndroidManifest.xml
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/AndroidManifest.xml
+=======
 >>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/AndroidManifest.xml
         <activity android:name=".CreateUser">
             <intent-filter>

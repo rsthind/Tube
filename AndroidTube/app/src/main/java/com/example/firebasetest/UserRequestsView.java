@@ -207,9 +207,12 @@ public class UserRequestsView extends AppCompatActivity {
      */
     private void processRequest(Request r) {
 <<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/UserRequestsView.java
+<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/UserRequestsView.java
         if (CreateUser.currUser.getUserID().equals(r.getUserID())) {
             insertionSortAdd(unmatchedRequestsList, r);
 =======
+=======
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/UserRequestsView.java
         if (CreateUser.currUser.getGTID().equals(r.getUserID())) {
             insertionSortAdd(allRequestsList, r);
 >>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/UserRequestsView.java

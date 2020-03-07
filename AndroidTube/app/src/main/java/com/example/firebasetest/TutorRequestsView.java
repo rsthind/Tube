@@ -79,6 +79,7 @@ public class TutorRequestsView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 <<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorRequestsView.java
+<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorRequestsView.java
                 selectedRequest.setTutorID(CreateUser.currUser.getUserID());
 
                 database.child(Constants.MatchedRequestsDBName).
@@ -90,6 +91,8 @@ public class TutorRequestsView extends AppCompatActivity {
                         child(selectedRequest.getRequestID()).removeValue();
 
 =======
+=======
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/TutorRequestsView.java
                 selectedRequest.setTutorID(CreateUser.currUser.getGTID());
                 database.child(selectedRequest.getRequestID()).setValue(selectedRequest);
 >>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/TutorRequestsView.java

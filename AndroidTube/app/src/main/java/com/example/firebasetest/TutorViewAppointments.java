@@ -157,10 +157,13 @@ public class TutorViewAppointments extends AppCompatActivity {
      * @param r the request to be added
      */
 <<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorViewAppointments.java
+<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorViewAppointments.java
     private void addRequest(List<Request> l, Request r) {
         if (CreateUser.currUser.getUserID().equals(r.getTutorID())) {
             insertionSortAdd(l, r);
 =======
+=======
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/TutorViewAppointments.java
     private void addRequest(Request r) {
         if (CreateUser.currUser.getGTID().equals(r.getTutorID())) {
             insertionSortAdd(r);
