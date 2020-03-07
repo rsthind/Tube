@@ -27,9 +27,7 @@ public class UserRequestsView extends AppCompatActivity {
     LinearLayout matchedRequestsView;
     LinearLayout addInfoSection;
 
-    ArrayList<Request> unmatchedRequestsList; // potential idea --> put this variable in the new class that
-    // has all the static variables so that it's already stored and you don't need to load it
-    // every time
+    ArrayList<Request> unmatchedRequestsList;
     ArrayList<Request> matchedRequestsList;
 
     Button makeRequestButton;

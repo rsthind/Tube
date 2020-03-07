@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TutorViewAppointments"></activity>
-        <activity android:name=".UserOrTutor"></activity>
-        <activity android:name=".TutorRequestsView"></activity>
+        <activity android:name=".Message_Main"></activity>
+        <activity android:name=".TutorViewAppointments" />
+        <activity android:name=".UserOrTutor" />
+        <activity android:name=".TutorRequestsView" />
         <activity android:name=".CreateUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
