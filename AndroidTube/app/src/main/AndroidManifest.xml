@@ -9,10 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD:AndroidTube/app/src/main/AndroidManifest.xml
         <activity android:name=".Message_Main"></activity>
         <activity android:name=".TutorViewAppointments" />
         <activity android:name=".UserOrTutor" />
         <activity android:name=".TutorRequestsView" />
+=======
+        <activity android:name=".TutorViewAppointments"></activity>
+        <activity android:name=".UserOrTutor"></activity>
+        <activity android:name=".TutorRequestsView"></activity>
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/AndroidManifest.xml
         <activity android:name=".CreateUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

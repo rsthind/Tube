@@ -57,7 +57,7 @@ public class CreateUser extends AppCompatActivity {
         String pass = password.getText().toString();
 
         // this will definitely have to change
-        ArrayList<String> verifiedCourses = new ArrayList<String>();
+        ArrayList<String> verifiedCourses = new ArrayList<>();
         verifiedCourses.add(verifiedCoursesText.getText().toString());
 
         if (!TextUtils.isEmpty(fname) && !TextUtils.isEmpty(lname) && !TextUtils.isEmpty(GTID) && !TextUtils.isEmpty(pass)) {

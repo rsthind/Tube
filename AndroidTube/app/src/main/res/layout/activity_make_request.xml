@@ -7,52 +7,42 @@
     tools:context=".MakeRequest">
 
     <!-- Put these in a linear layout and give them a nice lil gray border-->
+
     <EditText
         android:id="@+id/courseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Course"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.196"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseText" />
+        app:layout_constraintTop_toBottomOf="@+id/mRinfo"
+        app:layout_constraintVertical_bias="0.058" />
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/dark_gray_color"
+        android:layout_width="93dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="124dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
         android:id="@+id/viewRequestsButton"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/dark_gray_color"
+        android:layout_width="132dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="44dp"
         android:text="View Requests"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.894"
+        app:layout_constraintStart_toEndOf="@+id/goback" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -61,11 +51,15 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:hint="Additional Info (Optional)"
+        android:fontFamily="sans-serif-condensed-medium"
         app:counterEnabled="true"
         app:counterMaxLength="75"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateText">
+        app:layout_constraintTop_toBottomOf="@+id/timeSelection"
+        app:layout_constraintVertical_bias="0.182">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/addInfoText"
@@ -73,5 +67,87 @@
             android:layout_height="wrap_content"
             android:maxLength="75" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/dateSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date of Session"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/selectDate"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/courseText"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <Button
+        android:id="@+id/selectDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="Select Date"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mRinfo"
+        app:layout_constraintVertical_bias="0.173" />
+
+    <TextView
+        android:id="@+id/timeSelection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Time of Session"
+        android:textColor="@color/colorBlack"
+        android:textSize="20dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/selectTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateSelection"
+        app:layout_constraintVertical_bias="0.084" />
+
+    <Button
+        android:id="@+id/selectTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:text="Select Time"
+        android:fontFamily="sans-serif-condensed-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectDate"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <Button
+        android:id="@+id/goback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="40dp"
+        android:text="Go Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/mRinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="120dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Make a Request"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

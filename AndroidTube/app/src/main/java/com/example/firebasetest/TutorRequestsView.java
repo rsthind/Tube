@@ -78,6 +78,7 @@ public class TutorRequestsView extends AppCompatActivity {
         matchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorRequestsView.java
                 selectedRequest.setTutorID(CreateUser.currUser.getUserID());
 
                 database.child(Constants.MatchedRequestsDBName).
@@ -88,6 +89,10 @@ public class TutorRequestsView extends AppCompatActivity {
                         child(selectedRequest.getUserID()).
                         child(selectedRequest.getRequestID()).removeValue();
 
+=======
+                selectedRequest.setTutorID(CreateUser.currUser.getGTID());
+                database.child(selectedRequest.getRequestID()).setValue(selectedRequest);
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/TutorRequestsView.java
                 addInfoSection.setVisibility(View.INVISIBLE);
             }
         });
@@ -169,9 +174,24 @@ public class TutorRequestsView extends AppCompatActivity {
      * @param l the list to add to
      * @param r the request to be added
      */
+<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/TutorRequestsView.java
     private static void addRequest(List<String> verifiedCourses, List<Request> l, Request r) {
         if (verifiedCourses.contains(r.getCourse())) {
             insertionSortAdd(l, r);
+=======
+    private void addRequest(List<Request> l, Request r) {
+        if (verifiedCourses.contains(r.getCourse()) && (r.getTutorID().length() == 0
+                || r.getTutorID().equals(CreateUser.currUser.getGTID()))) {
+            if (l.size() == 0) {
+                l.add(r);
+            } else {
+                int addIndex = l.size();
+                for (int i = l.size() - 1; i >= 0 && r.compareTo(l.get(i)) < 0; i--) {
+                    addIndex = i;
+                }
+                l.add(addIndex, r);
+            }
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/TutorRequestsView.java
         }
     }
 
