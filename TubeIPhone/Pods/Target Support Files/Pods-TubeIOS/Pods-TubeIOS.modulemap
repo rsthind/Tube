@@ -1,0 +1,6 @@
+framework module Pods_TubeIOS {
+  umbrella header "Pods-TubeIOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
