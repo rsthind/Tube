@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class Request: CustomDebugStringConvertible {
     
@@ -98,6 +99,9 @@ class ViewRequestsTableViewController: UITableViewController {
         /*
          Following statements clear the current request in various formats
          */
+        var userUID = Auth.auth().currentUser!.uid
+        var recipientUID = request.userUID
+        
         requestKeys.remove(at: indexPath.row)
         requests.remove(at: indexPath.row)
         requestStrings.remove(at: indexPath.row)
