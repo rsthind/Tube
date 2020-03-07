@@ -22,6 +22,7 @@
 		3D74A3BF2389FC6E00D141E3 /* ClassesInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74A3BE2389FC6E00D141E3 /* ClassesInfoViewController.swift */; };
 		3D74A3C12389FE1200D141E3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D74A3C02389FE1200D141E3 /* User.swift */; };
 		3D74E54623807F1A00114DDE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D74E54523807F1A00114DDE /* GoogleService-Info.plist */; };
+		3DBE11CD23CA98390037950A /* ViewAppointmentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBE11CC23CA98390037950A /* ViewAppointmentsTableViewController.swift */; };
 		E70ACA5A59C2ECED6B516291 /* Pods_TubeIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABBEF8ED0F461CF862F92C89 /* Pods_TubeIOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		3D74A3BE2389FC6E00D141E3 /* ClassesInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesInfoViewController.swift; sourceTree = "<group>"; };
 		3D74A3C02389FE1200D141E3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = /Users/anshul/Documents/TubeIOS/TubeIOS/User.swift; sourceTree = "<absolute>"; };
 		3D74E54523807F1A00114DDE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3DBE11CC23CA98390037950A /* ViewAppointmentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAppointmentsTableViewController.swift; sourceTree = "<group>"; };
 		822559F56F3631BD7ACC5A90 /* Pods-TubeIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeIOS.debug.xcconfig"; path = "Target Support Files/Pods-TubeIOS/Pods-TubeIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ABBEF8ED0F461CF862F92C89 /* Pods_TubeIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TubeIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBD529A076CF3F9DFC05E9A /* Pods-TubeIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TubeIOS.release.xcconfig"; path = "Target Support Files/Pods-TubeIOS/Pods-TubeIOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				3D74A3C02389FE1200D141E3 /* User.swift */,
 				3D74E54523807F1A00114DDE /* GoogleService-Info.plist */,
 				3D0939B6237F9F730096ECCC /* Main.storyboard */,
+				3DBE11CC23CA98390037950A /* ViewAppointmentsTableViewController.swift */,
 				3D5AE59C23AF616E007B8E75 /* ViewRequestsTableViewController.swift */,
 				3D5AE57623ADD8DA007B8E75 /* CreateRequestsViewController.swift */,
 				3D0939B9237F9F750096ECCC /* Assets.xcassets */,
@@ -238,6 +241,7 @@
 				3D05032523A9778800361D58 /* MainPageViewController.swift in Sources */,
 				3D0939B5237F9F730096ECCC /* ViewController.swift in Sources */,
 				3D74A3C12389FE1200D141E3 /* User.swift in Sources */,
+				3DBE11CD23CA98390037950A /* ViewAppointmentsTableViewController.swift in Sources */,
 				3D5AE57323AA1C0D007B8E75 /* LoginViewController.swift in Sources */,
 				3D5AE57523AA1C17007B8E75 /* User.swift in Sources */,
 				3D5AE57723ADD8DA007B8E75 /* CreateRequestsViewController.swift in Sources */,

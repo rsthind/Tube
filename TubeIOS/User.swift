@@ -44,6 +44,7 @@ public func writeRequestToDatabase(className: String, dateTime: String, descript
         User.ref.child("requests").child("Unmatched Requests").child(uidToUse).childByAutoId().setValue(requestDict)
     }
     else {
+        requestDict["tutorUID"] = Auth.auth().currentUser?.uid
         User.ref.child("requests").child("Matched Requests").child(uidToUse).childByAutoId().setValue(requestDict)
     }
     
