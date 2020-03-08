@@ -26,14 +26,11 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/MakeRequest.java
     DatabaseReference database =
             FirebaseDatabase.getInstance().getReference(Constants.RequestsDBName);
-=======
 public class MakeRequest extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");//
->>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/MakeRequest.java
 
     EditText course;
     TextInputLayout addInfo;
@@ -148,7 +145,6 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
 //            database.child(request_ID).setValue(req);
             database.child(Constants.UnmatchedRequestsDBName).child(CreateUser.currUser.getUserID()).
                     child(request_ID).setValue(req);
-=======
     public void sendRequest() {
         String course_text = course.getText().toString().trim();
         String user_ID = CreateUser.currUser.getGTID();
@@ -161,7 +157,6 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
             Time approvedTime = new Time(dateTimeInfo[0], dateTimeInfo[1], dateTimeInfo[2], dateTimeInfo[3], dateTimeInfo[4]);
             Request req = new Request(course_text, addInfoText, approvedTime, user_ID, "", request_ID);
             database.child(request_ID).setValue(req);
->>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/java/com/example/firebasetest/MakeRequest.java
 
             Toast toast = Toast.makeText(this, "Request Created", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
