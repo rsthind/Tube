@@ -41,3 +41,4 @@ DerivedData/
 .externalNativeBuild
 .cxx
 
+!*.png
