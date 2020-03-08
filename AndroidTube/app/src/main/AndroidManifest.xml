@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.firebasetest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+<<<<<<< HEAD:AndroidTube/app/src/main/AndroidManifest.xml
+        <activity android:name=".Message_Main"></activity>
+        <activity android:name=".TutorViewAppointments" />
+        <activity android:name=".UserOrTutor" />
+        <activity android:name=".TutorRequestsView" />
+=======
+        <activity android:name=".TutorViewAppointments"></activity>
+        <activity android:name=".UserOrTutor"></activity>
+        <activity android:name=".TutorRequestsView"></activity>
+<<<<<<< HEAD:AndroidTube/app/src/main/AndroidManifest.xml
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/AndroidManifest.xml
+=======
+>>>>>>> 775eeb6b29322504fc66c6289c12dda508aeac07:app/src/main/AndroidManifest.xml
+        <activity android:name=".CreateUser">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UserRequestsView" />
+        <activity android:name=".MakeRequest" />
+    </application>
+
+</manifest>
