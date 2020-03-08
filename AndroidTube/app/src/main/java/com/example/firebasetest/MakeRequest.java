@@ -26,8 +26,6 @@ import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-    DatabaseReference database =
-            FirebaseDatabase.getInstance().getReference(Constants.RequestsDBName);
 public class MakeRequest extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference("Requests");//
@@ -138,13 +136,6 @@ public class MakeRequest extends AppCompatActivity implements DatePickerDialog.O
         }
     }
 
-<<<<<<< HEAD:AndroidTube/app/src/main/java/com/example/firebasetest/MakeRequest.java
-        if(!TextUtils.isEmpty(course_send)) { // replace this line with seeing if the time is valid
-            String request_ID = database.push().getKey();
-            Request req = new Request(course_send, addInfoString, new Time(), user_ID, "", request_ID);
-//            database.child(request_ID).setValue(req);
-            database.child(Constants.UnmatchedRequestsDBName).child(CreateUser.currUser.getUserID()).
-                    child(request_ID).setValue(req);
     public void sendRequest() {
         String course_text = course.getText().toString().trim();
         String user_ID = CreateUser.currUser.getGTID();
